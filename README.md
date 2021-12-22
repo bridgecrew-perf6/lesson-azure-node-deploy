@@ -2,6 +2,8 @@
 
 The following walks though deploying a Node/Express app to an Azure Linux Virtual Machine.
 
+<br>
+
 ![cloud computing](./images/cloud-computing.jpg)
 
 <br>
