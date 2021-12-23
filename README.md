@@ -15,19 +15,19 @@ The following walks though deploying a Node/Express app to an Azure Linux Virtua
 We'll use a bare bones Express app for this walk through. Let's set it up now!
 
 ```bash
-$ mkdir node-azure-deploy
+mkdir node-azure-deploy
 
-$ cd node-azure-deploy
+cd node-azure-deploy
 
-$ echo node_modules > .gitignore
+echo node_modules > .gitignore
 
-$ touch index.js
+touch index.js
 
-$ git init
+git init
 
-$ npm init
+npm init
 
-$ npm i express
+npm i express
 ```
 
 In `index.js` ...
@@ -72,7 +72,7 @@ Alright, let's roll!
 
 We'll create this in the project directory for the sake of organization, although it could be anywhere.
 ```bash
-$ touch cloud-init-github.txt
+touch cloud-init-github.txt
 ```
 
 Paste this code into `cloud-init-github.txt`
@@ -163,14 +163,14 @@ If you haven't already, install the [Azure CLI](https://docs.microsoft.com/en-us
 
 Login to the Azure CLI
 ```bash
-$ az login
+az login
 ```
 
 Create a resource group
 ```bash
-$ az group create \
-  --location eastus \
-  --name rg-demo-vm-eastus
+az group create \
+--location eastus \
+--name rg-demo-vm-eastus
 ```
 
 The value given for name will be the name of the resource group.
@@ -186,14 +186,14 @@ Make sure you are navigated to your project directory, or where ever you stored 
 
 Create a virtual machine
 ```bash
-$ az vm create \
-  --resource-group rg-demo-vm-eastus \
-  --name demo-vm \
-  --location eastus \
-  --image UbuntuLTS \
-  --admin-username azureuser \
-  --generate-ssh-keys \
-  --custom-data cloud-init-github.txt
+az vm create \
+--resource-group rg-demo-vm-eastus \
+--name demo-vm \
+--location eastus \
+--image UbuntuLTS \
+--admin-username azureuser \
+--generate-ssh-keys \
+--custom-data cloud-init-github.txt
 ```
 
 <br>
@@ -225,10 +225,10 @@ If we attempt to visit this IP address now the browser will be left hanging. We 
 
 Open it by running ...
 ```bash
-$ az vm open-port \
-  --port 80 \
-  --resource-group rg-demo-vm-eastus \
-  --name demo-vm
+az vm open-port \
+--port 80 \
+--resource-group rg-demo-vm-eastus \
+--name demo-vm
 ```
 
 Wait a couple of minutes and you should now be able to view your Express app at the IP address provided!
